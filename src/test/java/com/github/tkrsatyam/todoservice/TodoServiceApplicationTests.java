@@ -1,4 +1,4 @@
-package com.github.tkrsatyam.todo_service;
+package com.github.tkrsatyam.todoservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
