@@ -34,7 +34,7 @@ public class TodoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<TodoResponseDTO> updateTodo(
             @PathVariable Long id,
             @Valid @RequestBody TodoRequestDTO todoRequestDTO) {
