@@ -2,6 +2,7 @@ package com.github.tkrsatyam.todoservice.controller;
 
 import com.github.tkrsatyam.todoservice.dto.TodoRequestDTO;
 import com.github.tkrsatyam.todoservice.dto.TodoResponseDTO;
+import com.github.tkrsatyam.todoservice.dto.TodoUpdateRequestDTO;
 import com.github.tkrsatyam.todoservice.service.TodoService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -37,8 +38,8 @@ public class TodoController {
     @PutMapping("/{id}")
     public ResponseEntity<TodoResponseDTO> updateTodo(
             @PathVariable Long id,
-            @Valid @RequestBody TodoRequestDTO todoRequestDTO) {
-        return ResponseEntity.ok(todoService.updateTodo(id, todoRequestDTO));
+            @Valid @RequestBody TodoUpdateRequestDTO todoUpdateRequestDTO) {
+        return ResponseEntity.ok(todoService.updateTodo(id, todoUpdateRequestDTO));
     }
 
     @PatchMapping("/{id}/toggle")

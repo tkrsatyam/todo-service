@@ -2,6 +2,7 @@ package com.github.tkrsatyam.todoservice.service;
 
 import com.github.tkrsatyam.todoservice.dto.TodoRequestDTO;
 import com.github.tkrsatyam.todoservice.dto.TodoResponseDTO;
+import com.github.tkrsatyam.todoservice.dto.TodoUpdateRequestDTO;
 import com.github.tkrsatyam.todoservice.exception.TodoNotFoundException;
 import com.github.tkrsatyam.todoservice.model.Todo;
 import com.github.tkrsatyam.todoservice.repository.TodoRepository;
@@ -42,12 +43,13 @@ public class TodoService {
     }
 
     @Transactional
-    public TodoResponseDTO updateTodo(Long id, TodoRequestDTO todoRequestDTO) {
+    public TodoResponseDTO updateTodo(Long id, TodoUpdateRequestDTO todoUpdateRequestDTO) {
         Todo todo = todoRepository.findById(id)
                 .orElseThrow(() -> new TodoNotFoundException(id));
 
-        todo.setTitle(todoRequestDTO.getTitle());
-        todo.setDescription(todoRequestDTO.getDescription());
+        todo.setTitle(todoUpdateRequestDTO.getTitle());
+        todo.setDescription(todoUpdateRequestDTO.getDescription());
+        todo.setCompleted(todoUpdateRequestDTO.isCompleted());
         Todo updated = todoRepository.save(todo);
         return mapToResponseDTO(updated);
     }
